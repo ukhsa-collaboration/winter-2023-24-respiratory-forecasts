@@ -1,0 +1,23 @@
+# Pipeline configuration to produce influenza univariate models
+
+run_type: "univariate_prod"
+
+write: TRUE
+wipe: FALSE
+earliest_date: "2021-12-01"
+
+
+output_bucket: "PATH REMOVED/data/pancast_pipeline/influenza"
+
+
+sources:
+  total_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:
+  influenza_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:

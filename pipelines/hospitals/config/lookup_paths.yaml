@@ -1,0 +1,6 @@
+# influenza and rsv symptoms for 111
+winter_symptoms_path: "PATH REMOVED"
+# Trust characteristics
+eric_path: "PATH REMOVED/ERIC - 202122 - Trust data.csv"
+# iso3 ons code look up -- this was created by the geospatial team at UKHSA
+iso3_path: "PATH REMOVED/ISO_3166_2_GB_ONS.xlsx"

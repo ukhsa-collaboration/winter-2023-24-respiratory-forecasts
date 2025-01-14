@@ -1,0 +1,21 @@
+files:
+  pipeline_data: "PATH REMOVED"
+  pipeline_pattern: "_combined_prod.csv.gz"
+  admissions_forecast_data: "PATH REMOVED"
+  admissions_forecast_pattern: "all_models_predictions_samples_"
+
+overall_params:
+  disease: "covid"
+  target_name: "occupancy_rate"
+  metric: "occupancy"
+  # model_path: "full/path.R" # can set manually here, but generally not needed
+  n_pi_sample: 500
+  warmup_iterations: 500
+  max_lag: 28
+  forecast_horizon: 14 # TODO remove when regional pull is in
+  training_length: 50
+  threshold_type: "relative" # "absolute" an option; change values manually:
+  threshold_rates:
+    upper_rate: 0.20 # 20% not 0.2% # sugested relative range 15-25%
+    lower_rate: -0.20 # absolute values were: +/- 0.005; i.e. 0.5%
+  show_peaks: TRUE

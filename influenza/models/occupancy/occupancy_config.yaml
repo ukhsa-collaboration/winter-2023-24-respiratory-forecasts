@@ -1,0 +1,21 @@
+files:
+  pipeline_data: "PATH REMOVED"
+  pipeline_pattern: "ensemble_prod.csv.gz"
+  admissions_forecast_data: "PATH REMOVED"
+  admissions_forecast_pattern: "all_models_predictions_samples_"
+
+overall_params:
+  disease: "influenza"
+  target_name: "occupancy_rate" # not used
+  metric: "occupancy"
+  model_name: "ensemble_conversion"
+  n_pi_sample: 500
+  warmup_iterations: 500
+  max_lag: 28
+  forecast_horizon: 14
+  training_length: 50
+  threshold_type:  "relative" # "absolute" # an option but change values below:
+  threshold_rates:
+    upper_rate: 0.2 # prior absolute value: +/- 0.005, i.e. 0.5%
+    lower_rate: -0.2 # Sugested relative threshold: 20%
+  show_peaks: TRUE

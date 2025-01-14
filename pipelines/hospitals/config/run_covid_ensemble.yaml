@@ -1,0 +1,39 @@
+
+# Pipeline configuration to produce data for the COVID-19 ensemble
+
+run_type: "combined_prod"
+
+write: TRUE
+wipe: FALSE
+earliest_date: "2021-01-01"
+
+
+output_bucket:  "PATH REMOVED/data/pancast_pipeline/covid"
+
+
+sources:
+  total_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:
+  covid_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:
+  covid_oneoneone_calls:
+    include: TRUE
+    path_type: "dynamic"
+    path: "PATH REMOVED/data/111-calls/"
+    pattern: "111_and_999_calls_agg_date_type_lsoa_age_gender_finaldx_symptom"
+  covid_oneoneone_online:
+    include: TRUE
+    path_type:
+    path:
+    pattern:
+  covid_google_health:
+    include: TRUE
+    path_type:
+    path: "./pipelines/hospitals/config/google_terms/covid.txt" # list of terms - note that this is a local path, relative to project root
+    pattern:

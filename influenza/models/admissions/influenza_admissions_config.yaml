@@ -1,0 +1,66 @@
+# Configuration for ensemble
+
+# input files
+files:
+  pipeline_path: "PATH REMOVED"
+  pipeline_pattern: "ensemble_prod.csv.gz"
+  spatial_network_path: "PATH REMOVED"
+
+# the variables we need to extract from models
+required_covariates:
+  - "date"
+  - "icb_name"
+  - "nhs_region_name"
+  - "prediction_start_date"
+  - "model"
+  - "population"
+  - ".sample"
+  - ".value"
+
+overall_params:
+  disease: "influenza"
+  metric: "admissions" # "admissions" or "occupancy", based on folder
+  # model_path: "full/path.R" # can set manually here, but generally not needed
+  target_name: "admissions"
+  n_lookbacks: 5
+  forecast_horizon: 14
+  lookback_step_length: 7
+  n_pi_sample: 500
+  is_parallel: TRUE
+  show_peaks: TRUE
+  threshold_type: "relative" # "absolute" is another option; change values below
+  models_include:
+    - "univariate"
+    - "online"
+    - "gtrends"
+    - "ets"
+
+# parameters passed to each model specifically
+#   order does not matter, but all models need: training_length
+hyperparams:
+
+  univariate:
+    training_length: 60
+    t_q: 7
+    icb_name_q: 21
+
+  online:
+    gamma: 1
+    training_length: 14
+    max_lag: 7
+
+  gtrends:
+    gamma: 1.0 # values taken from covid equivilent
+    training_length: 21
+    max_lag: 7
+
+  ets:
+    training_length: 35
+    alpha: 0.4
+    beta: 0.01
+    phi: 0.95
+
+# define thresholds for classification of trend as a rate
+thresholds:
+  # Absolute: 0.1 per 100k; relative: 0.2 (20%)
+  admissions: 0.2 # 0.000001

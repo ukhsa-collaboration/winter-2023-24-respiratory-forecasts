@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: detect-private-key
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+  - repo: https://github.com/lorenzwalthert/precommit
+    rev: v0.4.0
+    hooks:
+      - id: parsable-R
+      - id: style-files
+        args: [--strict=FALSE, --cache-root=styler]
+  - repo: git@github.com:"REMOVED INTERNAL REPO"
+    rev: v0.0.1
+    hooks:
+      - id: parsable-roxygen

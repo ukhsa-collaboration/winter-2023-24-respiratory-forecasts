@@ -1,0 +1,43 @@
+# Configuration for rsv admissions v2
+
+# input files
+file_path:
+  uri: "PATH REMOVED"
+  pattern: "rsv_beds_inpatient_tests_univariate_prod"
+
+# the variables we need to extract from models
+required_covariates:
+  - "date"
+  - "nhs_region_name"
+  - "age_group"
+  - "prediction_start_date"
+  - "model"
+  - "population"
+  - ".sample"
+  - ".value"
+
+overall_params:
+  disease: "rsv"
+  target_name: "admissions" # "admissions"
+  metric: "admissions" # "admissions" or "occupancy", based on folder
+  # model_path: "full/path.R" # can set manually here, but generally not needed
+  n_lookbacks: 4
+  forecast_horizon: 14
+  lookback_step_length: 7
+  n_pi_sample: 1000
+  is_parallel: TRUE
+  show_peaks: TRUE
+  threshold_type: "relative" # "absolute" an option; change values manually:
+  threshold_rates:
+    upper_rate: 0.2 # Prior absolute value: +/- 0.000001, i.e. 0.1 per 100k
+    lower_rate: -0.2 # sugested relative range 20%
+# Thersholds currently unused, the absolute plots oddly,
+#  and all relative values I've tried don't seem to really work well
+
+# parameters passed to each model specifically
+#   order does not matter, but all models need: training_length
+hyperparams:
+
+  hospital_cases:
+    gamma: 1
+    training_length: 60

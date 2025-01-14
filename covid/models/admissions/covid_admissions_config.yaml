@@ -1,0 +1,77 @@
+# Configuration for ensemble v2
+
+# input files
+files:
+  pipeline_data: "latest" # use this to pull the most recent data file
+  pipeline_path: "PATH REMOVED"
+  pipeline_pattern: "combined_prod.csv.gz"
+
+required_covariates:
+  - "date"
+  - "trust_code"
+  - "icb_name"
+  - "nhs_region_name"
+  - "prediction_start_date"
+  - "model"
+  - "population"
+  - ".sample"
+  - ".value"
+
+overall_params:
+  disease: "covid"
+  target_name: "admissions" # "admissions" or "arrival_admissions"
+  metric: "admissions" # "admissions" or "occupancy", based on folder
+  # model_path: "full/path.R" # can set manually here, but generally not needed
+  n_lookbacks: 6
+  forecast_horizon: 14
+  lookback_step_length: 7
+  n_pi_sample: 500
+  is_parallel: TRUE
+  show_peaks: TRUE
+  threshold_type: "relative" # "absolute" is another option; change values below
+  # comment out which models to run
+  models_include:
+    - "univariate"
+    - "calls"
+    - "online"
+    - "gtrends"
+    - "ets"
+
+# parameters passed to each model specifically
+#   order does not matter, but all models need: training_length
+hyperparams:
+
+  calls:
+    gamma: 0.9
+    training_length: 21
+    max_lag: 7
+
+  online:
+    gamma: 0.9
+    training_length: 21
+    max_lag: 7
+
+  gtrends:
+    gamma: 1.5
+    training_length: 56
+    max_lag: 7
+
+  univariate:
+    gamma:
+    training_length: 80
+    trust_code_q: 28
+    nhs_region_name_q: 28
+
+  ets:
+    training_length: 35
+    alpha: 0.4
+    beta: 0.01
+    phi: 0.95
+
+
+  # define thresholds for classification of trend as a rate
+thresholds:
+# prior absolute value: 0.000001 i.e. 0.1 per 100k
+# Suggested relative value: 20% #
+  admissions: 0.2
+  arrival_admissions: 0.2

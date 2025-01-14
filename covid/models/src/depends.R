@@ -1,0 +1,26 @@
+install.packages(setdiff("pacman", rownames(installed.packages())))
+pacman::p_load(
+  aws.ec2metadata,
+  aws.s3,
+  vroom,
+  dplyr,
+  furrr,
+  future,
+  ggplot2,
+  ggthemes,
+  glue,
+  kableExtra,
+  lubridate,
+  purrr,
+  tidyr,
+  janitor,
+  stringr,
+  doParallel,
+  tidyverse,
+  zoo,
+  tictoc,
+  writexl,
+  patchwork,
+  scoringutils,
+  ggnewscale
+)

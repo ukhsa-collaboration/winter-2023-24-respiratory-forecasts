@@ -1,0 +1,33 @@
+# Pipeline configuration to produce influenza ensemble models
+
+run_type: "ensemble_prod"
+
+write: TRUE
+wipe: FALSE
+earliest_date: "2021-12-01"
+
+
+output_bucket: "PATH REMOVED/data/pancast_pipeline/influenza"
+
+
+sources:
+  total_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:
+  influenza_beds:
+    include: TRUE
+    path:
+    path_type:
+    pattern:
+  influenza_oneoneone_online:
+    include: TRUE
+    path: "PATH REMOVED/data/111-online/"
+    path_type: "dynamic"
+    pattern: "nhs111_postcode_district_5yrageband_gender_pathways_count_"
+  influenza_google_health:
+    include: TRUE
+    path_type:
+    path: "./pipelines/hospitals/config/google_terms/influenza.txt" # list of terms - note that this is a local path, relative to project root
+    pattern:

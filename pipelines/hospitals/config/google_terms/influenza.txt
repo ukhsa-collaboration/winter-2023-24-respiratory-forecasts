@@ -1,0 +1,15 @@
+acute_bronchitis
+arthralgia
+chills
+confusion
+cough
+diarrhea
+fatigue
+fever
+headache
+muscle_weakness
+myalgia
+nausea
+rhinitis
+throat_irritation
+vomiting
