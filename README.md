@@ -1,5 +1,7 @@
 # Forecasting COVID-19, influenza, and RSV hospitalisations over winter 2023/24 in England
 
+Code related to the publication (Forecasting COVID-19, influenza, and RSV hospitalisations over winter 2023/24 in England)[https://academic.oup.com/ije/article/54/3/dyaf066/8156944] published in the International Journal of Epidemiology, doi: 10.1093/ije/dyaf066.
+
 This is a one-way push of the relevant contents of the operational repository used to deliver forecasts within UKHSA in winter 2023/24.
 
 The repository represents the state of code at the end of the 2023/24 season.
